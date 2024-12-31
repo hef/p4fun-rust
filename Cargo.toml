@@ -1,0 +1,13 @@
+[package]
+name = "p4fun-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+autocxx = "0.27.0"
+cxx = "1.0.136"
+
+[build-dependencies]
+autocxx-build = "0.27.0"
+cc = "1.2.6"
+miette = { version = "7.4.0", features = ["fancy"] }
