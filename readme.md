@@ -1,4 +1,4 @@
-== Creating Rust Bindings for libp4 Work in Progress == 
+# Creating Rust Bindings for libp4 Work in Progress
 
 In binding rust to libp4 code, there are some crates doing most of the heavy lifting.
 
@@ -6,8 +6,7 @@ In binding rust to libp4 code, there are some crates doing most of the heavy lif
 * [cxx](https://crates.io/crates/cxx) "manually" build up a rust/c++ interop layer.  This expects you to write both c++ and rust to grow interfaces towards eachother.  This is very useful as an escape hatch when autocxx doesn't get something right, or needs massaging.
 * [autocxx](https://crates.io/crates/cxx) Automatically create bindings for rust from existing c++.  There is an autocxx-build component for codegen.  
 
-
-== Approach ==
+## Approach
 
 I wanted to port the p4api.cc sample code to rust as a proof of concept of calling libp4 code from rust.
 
@@ -20,14 +19,14 @@ When I hit a missing symbol, I just googled it to see where the symbol should be
 Once I solved the compilation and link problems, the runtime "just worked".  I haven't tested it extensively, so ymmv.
  
 
-== Unsolved ==
+## Unsolved
 
 * So far, this only builds for OSX.  I believe supporting other linux and windows is possible.
 * ranlib produces a lot of "has no symbol" warnings.  I didn't find a way to add args to ranlib in `cc`
 * It would be nice to use an existing openssl crate and gzip crate to reduce host platform dependencies.
 * the linker warnings `was built for newer 'macOS' version (15.2) than being linked (10.12)` shows up a lot, I should figure out what that implies, and what to do about it.
 
-== Thoughts ==
+## Thoughts
 
 * It's weird that you can't call superclass methods in autocxx generated code, even if they would be exposed in c++, hence the need for the SuperclassHack to expose StrPtr methods on StrBuf.
 * * It should be possible to just add methods manually using `#[cxx::bridge]` and would have a nicer api than the casting I'm currently doing.
