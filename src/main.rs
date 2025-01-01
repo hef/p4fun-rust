@@ -12,9 +12,9 @@ fn main() -> ExitCode {
     let ui = ffi::ClientUser::new(autocxx::c_int(0), autocxx::c_int(-1)).within_unique_ptr();
     let mut client = ffi2::ClientApi::new().within_unique_ptr();
     let mut msg = ffi::StrBuf::new().within_unique_ptr();
+    
     let e = ffi::Error::new().within_unique_ptr();
     
-
     return unsafe {
         ffi::P4Libraries::Initialize(autocxx::c_int(15), e.as_mut_ptr());
 
