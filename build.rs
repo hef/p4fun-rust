@@ -16,13 +16,13 @@ fn main() {
         "src",
     ];
 
-    let mut b = autocxx_build::Builder::new("src/main.rs", &includes)
+    let mut b = autocxx_build::Builder::new("src/bindings.rs", &includes)
         .extra_clang_args(&["-std=c++17"])
         .build()
         .unwrap();
     b.flag_if_supported("-std=c++17");
     b.compile("p4bindings");
-    println!("cargo:rerun-if-changed=src/main.rs");
+    println!("cargo:rerun-if-changed=src/bindings.rs");
 
     cc::Build::new()
         .flag_if_supported("-Wno-everything")
