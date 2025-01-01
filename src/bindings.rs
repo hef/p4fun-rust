@@ -2,7 +2,8 @@ use std::pin::Pin;
 
 use autocxx::prelude::*;
 
-pub mod z {
+// hack to make autocxx's generated code useable in other modules
+pub mod pub_ffi {
     pub use super::ffi::*;
 }
 

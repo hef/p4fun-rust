@@ -1,7 +1,7 @@
 
 mod bindings;
 
-pub use bindings::z as ffi;
+pub use bindings::pub_ffi as ffi;
 pub use bindings::ffi2 as ffi2;
 pub use bindings::SuperclassHack;
 
